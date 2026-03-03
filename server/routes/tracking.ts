@@ -1,4 +1,5 @@
-import { Router, Request, Response } from 'express';
+import { Router } from 'express';
+import type { Request, Response } from 'express';
 import { getShipmentByNumber } from '../services/storage.js';
 
 const router = Router();

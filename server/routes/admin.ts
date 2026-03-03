@@ -1,5 +1,7 @@
-import { Router, Request, Response } from 'express';
-import { readShipments, writeShipments, Shipment } from '../services/storage.js';
+import { Router } from 'express';
+import type { Request, Response } from 'express';
+import { readShipments, writeShipments } from '../services/storage.js';
+import type { Shipment } from '../services/storage.js';
 import crypto from 'crypto';
 
 const router = Router();
