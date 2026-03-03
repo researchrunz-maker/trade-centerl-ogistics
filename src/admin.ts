@@ -1,5 +1,5 @@
 // ── Config ───────────────────────────────────
-const API_BASE = 'http://localhost:3001';
+const API_BASE = ''; // Use relative path for production
 let ADMIN_TOKEN = '';
 
 // ── Types ────────────────────────────────────
