@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import type { Request, Response } from 'express';
-import { readShipments, writeShipments } from '../services/storage.js';
+import { readShipments, deleteShipmentById, upsertShipment } from '../services/storage.js';
 import type { Shipment } from '../services/storage.js';
 import crypto from 'crypto';
 
@@ -25,14 +25,11 @@ router.get('/shipments', isAdmin, async (_req, res) => {
 
 // Create/Update
 router.post('/shipments', isAdmin, async (req, res) => {
-    const shipments = await readShipments();
     const raw = req.body as Partial<Shipment>;
 
     if (!raw.trackingNumber) {
         return res.status(400).json({ error: 'Tracking number is required' });
     }
-
-    const existingIdx = shipments.findIndex(s => s.trackingNumber === raw.trackingNumber);
 
     const shipment: Shipment = {
         id: raw.id || crypto.randomUUID(),
@@ -51,22 +48,26 @@ router.post('/shipments', isAdmin, async (req, res) => {
         events: raw.events || []
     };
 
-    if (existingIdx > -1) {
-        shipments[existingIdx] = shipment;
-    } else {
-        shipments.push(shipment);
+    try {
+        const result = await upsertShipment(shipment);
+        if (!result) {
+            // This happens if Supabase is not configured yet
+            return res.status(503).json({ error: 'Database is not fully configured on the server yet.' });
+        }
+        res.json({ success: true, data: result });
+    } catch (err: any) {
+        res.status(500).json({ error: err.message });
     }
-
-    await writeShipments(shipments);
-    res.json({ success: true, data: shipment });
 });
 
 // Delete
 router.delete('/shipments/:id', isAdmin, async (req, res) => {
-    let shipments = await readShipments();
-    shipments = shipments.filter(s => s.id !== req.params.id);
-    await writeShipments(shipments);
-    res.json({ success: true });
+    try {
+        await deleteShipmentById(req.params.id as string);
+        res.json({ success: true });
+    } catch (err: any) {
+        res.status(500).json({ error: err.message });
+    }
 });
 
 export default router;
