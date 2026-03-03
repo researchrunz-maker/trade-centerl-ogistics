@@ -1,0 +1,18 @@
+[
+  {
+    "id": "34f3f580-e75c-4c08-9646-3d234b212b3a",
+    "trackingNumber": "TCL-VVIP-2026",
+    "status": "in-transit",
+    "statusLabel": "🚚 In Transit",
+    "eta": "March 31, 2026",
+    "progressPercent": 55,
+    "meta": {
+      "origin": "Dubai, UAE",
+      "destination": "Berlin, Germany",
+      "carrier": "Trade Center Logistics",
+      "weight": "—",
+      "service": "Standard Cargo"
+    },
+    "events": []
+  }
+]
