@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trade Center Logistics | Live Cargo Tracking</title>
+  <meta name="description"
+    content="Track your cargo shipments in real-time with Trade Center Logistics. Live updates for air freight, trucking, and ocean freight worldwide." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header id="header">
+    <nav class="container nav-inner">
+      <a href="/" class="logo">Trade Center <span>Logistics</span></a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#track">Track Shipment</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- HERO: TRACKING FORM -->
+  <section id="track" class="hero">
+    <div class="hero-bg-map" aria-hidden="true">
+      <!-- World map SVG lines decorative -->
+      <svg viewBox="0 0 1440 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#ff5e14" stop-opacity="0.3" />
+            <stop offset="100%" stop-color="#ff5e14" stop-opacity="0" />
+          </radialGradient>
+        </defs>
+        <!-- Route lines -->
+        <path d="M 200 300 Q 500 150 800 280 Q 1100 350 1300 220" stroke="#ff5e14" stroke-width="1.5" fill="none"
+          stroke-dasharray="8 6" opacity="0.5" />
+        <path d="M 100 350 Q 400 200 700 320 Q 950 400 1200 300" stroke="#4a9eff" stroke-width="1" fill="none"
+          stroke-dasharray="6 8" opacity="0.4" />
+        <path d="M 300 420 Q 600 280 900 360 Q 1150 430 1380 310" stroke="#ff5e14" stroke-width="1" fill="none"
+          stroke-dasharray="4 10" opacity="0.3" />
+        <!-- Pulsing nodes -->
+        <circle cx="200" cy="300" r="5" fill="#ff5e14" opacity="0.8" />
+        <circle cx="200" cy="300" r="12" fill="#ff5e14" opacity="0.2" class="pulse-node" />
+        <circle cx="800" cy="280" r="5" fill="#4a9eff" opacity="0.8" />
+        <circle cx="800" cy="280" r="12" fill="#4a9eff" opacity="0.2" class="pulse-node" />
+        <circle cx="1300" cy="220" r="5" fill="#ff5e14" opacity="0.8" />
+        <circle cx="1300" cy="220" r="12" fill="#ff5e14" opacity="0.2" class="pulse-node" />
+        <circle cx="500" cy="380" r="4" fill="#4a9eff" opacity="0.6" />
+        <circle cx="1000" cy="350" r="4" fill="#ff5e14" opacity="0.6" />
+      </svg>
+    </div>
+
+    <div class="container hero-content">
+      <div class="hero-badge">🌍 Live Global Tracking</div>
+      <h1>Track Your Cargo,<br />Anywhere in the World.</h1>
+      <p>Enter your tracking number to get real-time updates on your shipment — from origin to final destination.</p>
+
+      <form id="tracking-form" class="tracking-form-hero" autocomplete="off">
+        <div class="form-input-wrap">
+          <svg class="input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.35-4.35" />
+          </svg>
+          <input type="text" id="tracking-input" placeholder="Enter tracking number (e.g. TCL-8472910)" required
+            spellcheck="false" />
+        </div>
+        <button type="submit" class="btn btn-track" id="track-btn">
+          <span class="btn-text">Track Now</span>
+          <span class="btn-spinner hidden" aria-hidden="true"></span>
+        </button>
+      </form>
+      <p class="hero-hint">Try: <button class="sample-link" data-num="TCL-8472910">TCL-8472910</button>, <button
+          class="sample-link" data-num="TCL-3301847">TCL-3301847</button>, or <button class="sample-link"
+          data-num="TCL-5590023">TCL-5590023</button></p>
+    </div>
+  </section>
+
+  <!-- TRACKING RESULT PANEL -->
+  <section id="result-section" class="result-section hidden">
+    <div class="container">
+      <div class="result-card" id="result-card">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS STRIP -->
+  <section class="stats-strip">
+    <div class="container stats-grid">
+      <div class="stat">
+        <span class="stat-number">195+</span>
+        <span class="stat-label">Countries Covered</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">2.4M</span>
+        <span class="stat-label">Shipments Tracked</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">99.7%</span>
+        <span class="stat-label">On-Time Accuracy</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">24/7</span>
+        <span class="stat-label">Live Support</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="services">
+    <div class="container">
+      <div class="section-title">
+        <h2>Services We Track</h2>
+        <p>Comprehensive coverage across every major freight mode — all in one place.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">✈️</div>
+          <h3>Air Freight</h3>
+          <p>Express and standard air shipments across 195+ countries with live gate-by-gate tracking.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🚢</div>
+          <h3>Ocean Freight</h3>
+          <p>Full container (FCL) and less-than-container (LCL) ocean freight with vessel position updates.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🚛</div>
+          <h3>Ground Transport</h3>
+          <p>Domestic and cross-border trucking with live GPS location and ETA updates.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🏭</div>
+          <h3>Warehousing</h3>
+          <p>Monitor goods at storage facilities with inbound, outbound, and inventory event logs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about">
+    <div class="container about-flex">
+      <div class="about-img-wrap">
+        <img src="/assets/hero_bg.png" alt="Global logistics operations" />
+      </div>
+      <div class="about-text">
+        <h2>Delivering The Best Global Logistics.</h2>
+        <p>Trade Center Logistics gives businesses and individuals the power to track cargo across any carrier, any
+          mode, and any country — in real time. We partner with the world's leading freight networks to surface
+          accurate, live shipment data directly to you.</p>
+        <ul class="check-list">
+          <li>Live tracking across 300+ carriers worldwide</li>
+          <li>Push notifications for every status change</li>
+          <li>Delivery ETAs powered by AI route analysis</li>
+          <li>End-to-end supply chain visibility</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <div class="logo footer-logo">Trade Center <span>Logistics</span></div>
+        <p>Global cargo tracking, simplified. Track shipments from anywhere in the world.</p>
+        <p class="footer-contact-item">📧 contact@tradecenterlogi.com</p>
+        <p class="footer-contact-item">📞 1 (917) 413-9774</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#track">Track Shipment</a></li>
+          <li><a href="#services">Our Services</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-hours">
+        <h4>Support Hours</h4>
+        <p>Mon – Sat: 08:00 – 20:00</p>
+        <p>Sunday: Closed</p>
+        <h4 style="margin-top:1.5rem;">All Services</h4>
+        <ul>
+          <li><a href="#services">Air Freight</a></li>
+          <li><a href="#services">Ocean Freight</a></li>
+          <li><a href="#services">Ground Transport</a></li>
+          <li><a href="#services">Warehousing</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Trade Center Logistics. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>
